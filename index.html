@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Productos Globales del Campo | Tienda en Línea y Fidelidad</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet">
 <style>
 :root {
 --primary: #1b382b;
@@ -27,6 +27,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
 body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.5; padding-bottom: 60px; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
 /* ===== PANTALLA INICIAL DE FIDELIDAD ===== */
 .client-stamp-container {
 display: flex;
@@ -83,6 +84,7 @@ box-shadow: 0 4px 10px rgba(255,202,40,0.2);
 }
 .client-search-box button:hover { background-color: #ffb300; transform: translateY(-1px); }
 .client-placeholder { text-align: center; opacity: 0.85; font-size: 13.5px; margin: 10px 0; line-height: 1.4; }
+
 /* Cuadrícula Estética de 10 Sellos */
 .stamp-grid-10 {
 display: grid;
@@ -132,6 +134,7 @@ font-size: 14px;
 border: 1px solid #ffeeba;
 line-height: 1.4;
 }
+
 /* ===== BANNER PRINCIPAL ===== */
 .banner { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; padding: 36px 20px 52px; position: relative; overflow: hidden; }
 .banner::after { content: ""; position: absolute; right: -60px; top: -60px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(200,150,62,0.25) 0%, transparent 70%); }
@@ -143,11 +146,13 @@ line-height: 1.4;
 .banner-hero { margin-top: 26px; max-width: 640px; position: relative; z-index: 1; }
 .banner-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(24px, 4vw, 34px); font-weight: 700; margin-bottom: 8px; }
 .banner-hero p { font-size: 13.5px; opacity: 0.85; max-width: 480px; }
+
 /* ===== LAYOUT PRINCIPAL ===== */
 .shop-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: -26px; padding-bottom: 40px; position: relative; z-index: 2; }
 @media (max-width: 900px) { .shop-layout { grid-template-columns: 1fr; margin-top: 10px; } }
 .catalog-title { font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; background: var(--bg-white); padding: 16px 20px; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
 .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+
 .product-card { background: var(--bg-white); border-radius: var(--radius-lg); border: 1px solid rgba(27,56,43,0.08); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; }
 .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 26px rgba(27,56,43,0.14); }
 .product-image { width: 100%; height: 115px; object-fit: cover; background-color: #eef0ee; }
@@ -157,13 +162,11 @@ line-height: 1.4;
 .product-price { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-top: auto; margin-bottom: 10px; }
 .btn-add { background-color: var(--primary); color: #fff; border: none; padding: 9px; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; width: 100%; transition: var(--transition); display: flex; justify-content: center; align-items: center; gap: 6px; font-size: 12px; }
 .btn-add:hover { background-color: var(--primary-dark); }
+
 /* ===== PANEL DE PEDIDO Y RESUMEN ===== */
 .cart-panel { background: var(--bg-white); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow); border: 1px solid rgba(27,56,43,0.08); height: fit-content; }
 .panel-section-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid var(--bg-cream); padding-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-.internal-stamp-card {
-background: linear-gradient(135deg, #10241c 0%, #1b382b 100%);
-color: white; padding: 16px; border-radius: var(--radius-md); margin-bottom: 20px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
-}
+.internal-stamp-card { background: linear-gradient(135deg, #10241c 0%, #1b382b 100%); color: white; padding: 16px; border-radius: var(--radius-md); margin-bottom: 20px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.2); }
 .internal-stamp-card h4 { font-size: 13px; margin-bottom: 8px; letter-spacing: 0.03em; color: var(--accent); text-transform: uppercase; }
 .cart-items-container { margin-bottom: 15px; max-height: 280px; overflow-y: auto; }
 .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-color); font-size: 13px; }
@@ -185,509 +188,6 @@ color: white; padding: 16px; border-radius: var(--radius-md); margin-bottom: 20p
 .btn-whatsapp:disabled, .btn-recibo:disabled { background-color: #cbd5e1; color: #94a3b8; cursor: not-allowed; }
 .btn-recibo { background-color: var(--primary); color: white; }
 .btn-recibo:hover { background-color: var(--primary-dark); }
-.floating-cart-badge { position: fixed; bottom: 20px; right: 20px;
-background-color: var(--leaf); color: white;padding: 14px 20px; border-radius: 30px;
-box-shadow: 0 6px 20px rgba(142,176,87,0.4);
-display: none; align-items: center; gap: 10px;
-font-weight: 700; font-size: 14px; cursor: pointer;
-z-index: 1000; text-decoration: none; transition: var(--transition);
-}
+
+.floating-cart-badge { position: fixed; bottom: 20px; right: 20px; background-color: var(--leaf); color: white; padding: 14px 20px; border-radius: 30px; box-shadow: 0 6px 20px rgba(142,176,87,0.4); display: none; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; cursor: pointer; z-index: 1000; text-decoration: none; transition: var(--transition); }
 .floating-cart-badge:hover { transform: scale(1.05); background-color: #7da049; }
-.floating-count { background-color: #dc3545; color: white; border-radius: 50%; padding: 2px 8px; font-size: 11px; }
-@media (max-width: 900px) {
-.floating-cart-badge { display: flex; }
-}
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
-.modal-content { background: white; padding: 24px; border-radius: var(--radius-lg); max-width: 420px; width: 100%; max-height: 90vh; overflow-y: auto; }
-.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-.btn-close-modal { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
-</style>
-</head>
-<body>
-<!-- 1. PANTALLA INICIAL DE FIDELIDAD (MÓDULO ACCESO) -->
-<div id="pantalla-fidelidad-inicial" class="client-stamp-container">
- <div class="client-stamp-card">
-<div class="client-card-header"><h3>⭐ PG Del Campo</h3></div>
-<p class="client-placeholder">
-Bienvenido a nuestro sistema. Introduce tu número de WhatsApp móvil para verificar tus estrellas acumuladas y activar promociones exclusivas cada 10 compras.
-</p>
-<div class="client-search-box">
-<input type="tel" id="clientPhone" placeholder="WhatsApp (Ej: 88888888)" maxlength="8" onkeypress="evaluarEnterAcceso(event)">
-<button onclick="verMisSellosYEntrar()">Consultar Estrellas y Comprar ➔</button>
-</div>
-<div id="clientStampResult"></div>
-</div>
-</div>
-<!-- 2. CONTENEDOR PRINCIPAL DEL CATÁLOGO DE LA TIENDA -->
-<div id="contenedor-catalogo-principal" style="display: none;">
-<header class="banner">
-<div class="banner-inner">
-<div class="brand">
-<div class="brand-mark">🌿</div>
-<div>
-<div class="brand-name">Productos Globales del Campo</div>
-<div class="brand-tagline">Calidad de la Tierra a tu Alcance</div>
-</div>
-</div>
-</div>
-<div class="container">
-<div class="banner-hero">
-<h1>Catálogo Digital de Distribución</h1>
-<p>Arma tu orden en línea, gestiona tus beneficios de lealtad y despacha de forma directa a tu negocio mediante nuestra pasarela WhatsApp.</p>
-</div>
-</div>
-</header>
-<main class="container" style="margin-top: 40px;">
-<div class="shop-layout">
-<!-- SECCIÓN IZQUIERDA: CATÁLOGO -->
-<div>
-<div class="catalog-title">🛒 Catálogo de Productos Disponibles</div>
-<div id="products-grid" class="products-grid">
-<p style="padding: 20px; color: var(--text-muted);">Cargando catálogo oficial de productos...</p>
-</div>
-</div>
-<!-- SECCIÓN DERECHA: PANEL DE CONTROL Y PEDIDOS -->
-<div id="seccion-pedido-checkout">
-<div class="cart-panel">
-<div class="internal-stamp-card">
-<h4>⭐ Panel de Fidelidad Activo</h4>
-<div id="internalStampContent">
-<p style="font-size:12px; opacity:0.85;">Sesión de cliente enlazada correctamente.</p>
-</div>
-</div>
-<div class="panel-section-title">🛍️ Resumen de Pedido <span id="cart-count" style="font-size:12px; font-weight:normal; margin-left:auto;">0 Items</span></div>
-<div id="cart-items" class="cart-items-container">
-<div class="cart-empty">El carrito está vacío</div>
-</div>
-<div class="panel-section-title" style="margin-top: 20px;">📦 Datos de Envío</div>
-<div class="form-group">
-<label>Nombre Completo / Razón Social:</label>
-<input type="text" id="cliente-nombre" placeholder="Ej: Fernando Gutiérrez">
-</div>
-<div class="form-group">
-<label>Número Telefónico (Fidelizado):</label>
-<input type="tel" id="cliente-tel" readonly style="background-color:#eef0ee; cursor:not-allowed;">
-</div>
-<div class="form-group">
-<label>Dirección Física de Destino:</label>
-<input type="text" id="cliente-dir" placeholder="Ej: Costado sur de Iglesia San Antonio">
-</div>
-<div class="form-group">
-<label>Zona / Modalidad de Despacho:</label>
-<select id="zona-envio" onchange="calcularTotales()">
-<option value="0" data-nombre="Comercios y Distribuidores">Comercios y Distribuidores (Gratis)</option>
-<option value="20" data-nombre="Envío a Domicilio / Diriamba">Jinotepe, Dolores, Diriamba, San Marcos (C$ 20.00)</option>
-<option value="-1" data-nombre="Envío a Convenir (Departamentos)">Departamentos - A Convenir</option>
-</select>
-</div>
-<div class="panel-section-title" style="margin-top:20px;">🧾 Desglose de Cuenta</div>
-<div class="totals-line"><span>Subtotal Neto:</span><strong id="subtotal">C$ 0.00</strong></div>
-<div class="totals-line" id="linea-desc-aplicado" style="display:none;">
- <span id="label-porcentaje-desc" class="discount-label">Descuento Aplicado:</span>
- <strong id="monto-desc-aplicado" class="discount-label">- C$ 0.00</strong>
-</div>
-<div class="totals-line"><span>Costo de Despacho:</span><strong id="costo-envio">C$ 0.00</strong></div>
-<div class="totals-line total"><span>TOTAL NETO A PAGAR:</span><strong id="total-pagar">C$ 0.00</strong></div>
-<div id="retencion-info" style="display:none; background:#fee2e2; padding:10px; border-radius:8px; font-size:11px; color:#991b1b; margin-top:10px; font-weight:600;">
- Sujeto a retención del 2% de I.R. aplicable a cuentas jurídicas.
-</div>
-<button id="btn-whatsapp" class="btn-action btn-whatsapp" onclick="procesarPagoWhatsApp()" disabled>
-Confirmar Pedido por WhatsApp
-</button>
-<button id="btn-recibo" class="btn-action btn-recibo" onclick="generarEImprimirRecibo()" disabled>
-Generar e Imprimir Recibo
-</button>
-</div>
-</div>
-</div>
-</main>
-<a href="#seccion-pedido-checkout" class="floating-cart-badge" id="floatingCartBadge">
-<span>🛒 Ver Orden</span>
-<span class="floating-count" id="cart-count-badge">0</span>
-</a>
-<!-- MODAL DE RECIBO DIGITAL -->
-<div id="receipt-modal" class="modal">
-<div class="modal-content">
-<div class="modal-header">
-<h3 style="font-family:'Fraunces',serif; color:var(--primary);">Recibo Oficial de Orden</h3>
-<button class="btn-close-modal" onclick="cerrarModalRecibo()">×</button>
-</div>
-<div id="rec-body" style="font-size:12.5px; font-family:monospace; color:#333; line-height:1.4;">
-<div style="text-align:center; font-weight:bold; margin-bottom:10px;">PRODUCTOS GLOBALES DEL CAMPO</div>
-<div style="margin-bottom:8px;"><strong>No. Recibo:</strong> <span id="rec-num">0000001</span></div>
-<div style="margin-bottom:8px;"><strong>Fecha Emisión:</strong> <span id="rec-date">--/--/----</span></div>
-<hr style="border:none; border-top:1px dashed #ccc; margin:8px 0;">
-<div id="rec-cliente-info" style="margin-bottom:8px;"></div>
-<hr style="border:none; border-top:1px dashed #ccc; margin:8px 0;">
-<div style="font-weight:bold; margin-bottom:4px;">ITEMS COMPRADOS:</div>
-<div id="rec-items-list"></div>
-<hr style="border:none; border-top:1px dashed #ccc; margin:8px 0;">
-<div style="display:flex; justify-content:space-between;"><span>SUBTOTAL:</span><span id="rec-subtotal">C$ 0.00</span></div>
-<div style="display:flex; justify-content:space-between; display:none;" id="rec-linea-desc"><span id="rec-desc-label">DESCUENTO:</span><span id="rec-desc-monto">- C$ 0.00</span></div>
-<div style="display:flex; justify-content:space-between;"><span>ENVÍO:</span><span id="rec-envio">C$ 0.00</span></div>
-<div style="display:flex; justify-content:space-between; font-weight:bold; font-size:14px; margin-top:6px;"><span>TOTAL COMPRA:</span><span id="rec-total-monto">C$ 0.00</span></div>
-<p id="rec-retencion-note" style="color:#7f1d1d; font-size:10px; margin-top:10px; font-weight:bold; text-align:center;"></p>
-<hr style="border:none; border-top:1px dashed #ccc; margin:8px 0;">
-<p style="text-align:center; font-size:11px; font-weight:bold; color:var(--primary); margin-top:8px;">¡Gracias por preferirnos e impulsar el campo! 🌱</p>
-</div>
-<button class="btn-action btn-recibo" style="margin-top:15px;" onclick="window.print()">Mandar a Impresora</button>
-</div>
-</div>
-</div>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, get, child, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyBfPmfE6axd_W0Z80b0L-Jbjy6q7l9_NTk",
-authDomain: "productos-globales-campo.firebaseapp.com",
-databaseURL: "https://productos-globales-campo-default-rtdb.firebaseio.com",
-projectId: "productos-globales-campo",
-storageBucket: "productos-globales-campo.firebasestorage.app",
-messagingSenderId: "938958452862",
-appId: "1:938958452862:web:3b618567dae9aa01b7c02f",
-measurementId: "G-MKD9T10DP3"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-let carrito = [];
-let productosData = {};
-let clienteTotalComprasHistorial = 0;
-let clienteMontoTotalHistorial = 0; // NUEVO: guarda el monto acumulado real del cliente
-let tienePremioActivo = false;
-let contadorRecibo = 1001;
-const numeroDestinoWhatsApp = "50557973097";
-
-window.evaluarEnterAcceso = function(event) {
-if (event.key === "Enter") { window.verMisSellosYEntrar(); }
-};
-
-async function cargarCatalogoProductos() {
-const grid = document.getElementById("products-grid");
-try {
-const snapshot = await get(child(ref(db), "productos"));
-if (snapshot.exists()) {
-productosData = snapshot.val();
-grid.innerHTML = "";
-Object.keys(productosData).forEach(key => {
-const item = productosData[key];
-const stock = parseInt(item.stock || 0);
-const precio = parseFloat(item.precio || 0);
-grid.innerHTML += `
-<div class="product-card">
-${item.imagen ? `<img class="product-image" src="${item.imagen}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="product-image-fallback" style="display:none;">🌿</div>` : `<div class="product-image-fallback">🌿</div>`}
-<div class="product-info">
-<h4 class="product-name">${item.nombre}</h4>
-<p style="font-size:10.5px; color:var(--text-muted); margin-bottom:5px;">Disponibles: ${stock} unidades</p>
-<div class="product-price">C$ ${precio.toFixed(2)}</div>
-<button class="btn-add" ${stock <= 0 ? 'disabled' : ''} onclick="agregarAlCarrito('${key}')">
-${stock <= 0 ? 'Agotado' : '➕ Anexar Pedido'}
-</button>
-</div>
-</div>
-`;
-});
-} else {
-grid.innerHTML = "<p style='padding:20px; color:var(--text-muted);'>No hay productos registrados en el inventario actual.</p>";
-}
-} catch (err) {
-console.error("Error catálogo:", err);
-grid.innerHTML = "<p style='padding:20px; color:#dc3545;'>Error al sincronizar inventario.</p>";
-}
-}
-
-window.verMisSellosYEntrar = async function() {
-const telefono = document.getElementById("clientPhone").value.trim();
-const resultadoDiv = document.getElementById("clientStampResult");
-if (!telefono || telefono.length < 8) {
-alert("Por favor ingresa un número de WhatsApp nicaragüense válido.");
-return;
-}
-resultadoDiv.innerHTML = "<p class='client-placeholder'>Estableciendo conexión segura...</p>";
-try {
-const snapshot = await get(child(ref(db), `clientes/${telefono}`));
-let totalCompras = 0;
-let nombreCliente = "Cliente Frecuente";
-if (snapshot.exists()) {
-const data = snapshot.val();
-totalCompras = parseInt(data.total_compras || 0);
-nombreCliente = data.nombre || nombreCliente;
-}
-clienteTotalComprasHistorial = totalCompras;
-// NUEVO: rescatar el monto acumulado real del cliente para no perder el historial
-clienteMontoTotalHistorial = snapshot.exists() ? parseFloat(snapshot.val().monto_total || 0) : 0;
-
-let sellosActuales = totalCompras % 10;
-if (sellosActuales === 0 && totalCompras > 0) {
-sellosActuales = 10;
-tienePremioActivo = true;
-} else {
-tienePremioActivo = false;
-}
-let resumenTexto = totalCompras === 0 ? "¡Bienvenido a PG Del Campo! Estás por iniciar tu primera tarjeta digital de estrellas."
-: `¡Hola de nuevo, <strong>${nombreCliente}</strong>! Cuentas con <strong>${totalCompras}</strong> compras en nuestro registro histórico.`;
-let html = `<p class='client-placeholder' style='margin: 15px 0 10px;'>${resumenTexto}</p>`;
-html += `<div class="stamp-grid-10">`;
-for (let i = 1; i <= 10; i++) {
-if (i <= sellosActuales) {
-html += `<div class="stamp-slot-10 active">★<span class="stamp-number-10">${i}</span></div>`;
-} else {
-html += `<div class="stamp-slot-10"><span class="stamp-number-10">${i}</span></div>`;
-}
-}
-html += `</div>`;
-if (tienePremioActivo) {
-html += `
-<div class="reward-banner-10">
-🎉 ¡PROMO FIDELIDAD ACTIVADA!<br>
-Completaste tus 10 compras consecutivas. Se aplicará un beneficio especial en tu carrito de compras de hoy de forma automática.
-</div>
-`;
-} else {
-let restantes = 10 - sellosActuales;
-html += `<p class='client-placeholder' style='margin-bottom: 20px; font-weight:bold; color:#ffca28;'>Te faltan únicamente ${restantes} compras para desbloquear tu próximo descuento.</p>`;
-}
-html += `
-<button onclick="desbloquearTiendaCatalogo('${telefono}', '${nombreCliente}', ${sellosActuales})"
-style="background-color: #28a745; color: white; border: none; padding: 14px; border-radius: 10px; font-weight: bold; width: 100%; cursor: pointer; font-size: 16px; box-shadow: 0 4px 12px rgba(40,167,69,0.3); transition:0.2s;">
-Acceder al Catálogo de Compra ➔
-</button>
-`;
-resultadoDiv.innerHTML = html;
-} catch (err) {
-console.error(err);
-resultadoDiv.innerHTML = "<p class='client-placeholder' style='color:#ff8a80;'>Error al enlazar la base de datos de fidelidad.</p>";
-}
-};
-
-window.desbloquearTiendaCatalogo = function(telefono, nombre, sellos) {
-document.getElementById("pantalla-fidelidad-inicial").style.display = "none";
-document.getElementById("contenedor-catalogo-principal").style.display = "block";
-document.getElementById("cliente-tel").value = telefono;
-document.getElementById("cliente-nombre").value = nombre === "Cliente Frecuente" ? "" : nombre;
-const miniPanel = document.getElementById("internalStampContent");
-miniPanel.innerHTML = `
-<div style="font-size:12.5px; line-height:1.4;">
-<p>📱 <strong>Teléfono:</strong> ${telefono}</p>
-<p>⭐ <strong>Estrellas Ciclo:</strong> ${sellos} de 10 acumuladas</p>
-${tienePremioActivo ? '<span style="display:inline-block; background:#ffca28; color:#10241c; font-size:10px; font-weight:bold; padding:2px 6px; border-radius:4px; margin-top:4px;">Beneficio 10ma Compra Habilitado</span>' : ''}
-</div>
-`;
-cargarCatalogoProductos();
-};
-
-window.agregarAlCarrito = function(key) {
-const p = productosData[key];
-if (!p) return;
-const stock = parseInt(p.stock || 0);
-const existing = carrito.find(i => i.key === key);
-const cantidadActual = existing ? existing.cant : 0;
-if (cantidadActual + 1 > stock) {
-alert('No se puede anexar más unidades. Ha alcanzado el límite de stock de este producto.');
-return;
-}
-if (existing) { existing.cant += 1; }
-else { carrito.push({ key, nombre: p.nombre, precio: parseFloat(p.precio || 0), cant: 1 }); }
-calcularTotales();
-};
-
-window.quitarDelCarrito = function(key) {
-carrito = carrito.filter(i => i.key !== key);
-calcularTotales();
-};
-
-window.calcularTotales = function() {
-const cartContainer = document.getElementById('cart-items');
-const totalItemsCount = carrito.reduce((acc, i) => acc + i.cant, 0);
-document.getElementById('cart-count').innerText = `${totalItemsCount} Items`;
-document.getElementById('cart-count-badge').innerText = totalItemsCount;
-if (carrito.length === 0) {
-cartContainer.innerHTML = '<div class="cart-empty">El carrito está vacío</div>';
-document.getElementById('btn-whatsapp').disabled = true;
-document.getElementById('btn-recibo').disabled = true;
-} else {
-document.getElementById('btn-whatsapp').disabled = false;
-document.getElementById('btn-recibo').disabled = false;
-cartContainer.innerHTML = '';
-carrito.forEach(i => {
-cartContainer.innerHTML += `
-<div class="cart-item">
-<div class="cart-item-details">
-<h4>${i.nombre}</h4>
-<p>C$ ${i.precio.toFixed(2)} x ${i.cant}</p>
-</div>
-<div class="cart-item-actions">
-<strong>C$ ${(i.precio * i.cant).toFixed(2)}</strong>
-<button class="btn-remove" onclick="quitarDelCarrito('${i.key}')">Quitar</button>
-</div>
-</div>`;
-});
-}
-const subtotal = carrito.reduce((acc, i) => acc + (i.precio * i.cant), 0);
-const selectEnvio = document.getElementById('zona-envio');
-const envioValor = parseFloat(selectEnvio.value);
-const esAConvenir = envioValor === -1;
-const envio = esAConvenir || subtotal === 0 ? 0 : envioValor;
-let porcVolumen = 0;
-if (subtotal > 1800) porcVolumen = 0.03;
-else if (subtotal > 1200) porcVolumen = 0.02;
-else if (subtotal > 600) porcVolumen = 0.01;
-let porcFidelidad = tienePremioActivo ? 0.02 : 0;
-let porcTotal = porcVolumen + porcFidelidad;
-let montoDescuento = subtotal * porcTotal;
-let totalPagar = (subtotal - montoDescuento) + envio;
-document.getElementById('subtotal').innerText = `C$ ${subtotal.toFixed(2)}`;
-document.getElementById('costo-envio').innerText = esAConvenir && subtotal > 0 ? 'A convenir' : `C$ ${envio.toFixed(2)}`;
-if (porcTotal > 0 && subtotal > 0) {
-document.getElementById('linea-desc-aplicado').style.display = 'flex';
-document.getElementById('label-porcentaje-desc').innerText = `Descuento Aplicado (${(porcTotal * 100).toFixed(0)}%):`;
-document.getElementById('monto-desc-aplicado').innerText = `- C$ ${montoDescuento.toFixed(2)}`;
-} else {
-document.getElementById('linea-desc-aplicado').style.display = 'none';
-}
-document.getElementById('total-pagar').innerText = esAConvenir && subtotal > 0
-? `C$ ${(subtotal - montoDescuento).toFixed(2)} + envío a convenir`
-: `C$ ${totalPagar.toFixed(2)}`;
-};
-
-// ===== CORREGIDO: acumula monto_total correctamente y registra el bloque en 'compras_registro' =====
-async function registrarPedidoEnFirebase(totalPagar) {
-const tel = document.getElementById('cliente-tel').value.trim();
-const nombre = document.getElementById('cliente-nombre').value.trim() || 'Cliente General';
-if (!tel || carrito.length === 0) return;
-try {
-const nuevasCompras = clienteTotalComprasHistorial + 1;
-const nuevoMonto = clienteMontoTotalHistorial + totalPagar; // antes se perdía el historial acumulado
-
-await set(ref(db, 'clientes/' + tel), {
-nombre: nombre,
-total_compras: nuevasCompras,
-monto_total: nuevoMonto,
-ultima_compra: new Date().toISOString()
-});
-
-for (let item of carrito) {
-const currentProd = productosData[item.key];
-if (currentProd) {
-const nuevoStock = Math.max(0, parseInt(currentProd.stock || 0) - item.cant);
-await set(ref(db, 'productos/' + item.key), { ...currentProd, stock: nuevoStock });
-}
-}
-
-// NUEVO: registrar el bloque de compra completo para permitir su anulación desde el panel admin
-const compraId = 'compra_' + Date.now();
-const items = {};
-carrito.forEach(item => { items[item.key] = item.cant; });
-await set(ref(db, 'compras_registro/' + compraId), {
-id: compraId,
-fecha: new Date().toLocaleString('es-NI', { timeZone: 'America/Managua' }),
-whatsapp_cliente: tel,
-items: items,
-monto_revertir: totalPagar
-});
-
-} catch (e) {
-console.error("Error al asentar transacciones en Firebase:", e);
-}
-}
-
-window.procesarPagoWhatsApp = async function() {
-if (carrito.length === 0) return alert('El carrito de compras se encuentra vacío.');
-const cliente = document.getElementById('cliente-nombre').value.trim();
-const telf = document.getElementById('cliente-tel').value.trim();
-const dir = document.getElementById('cliente-dir').value.trim();
-const selectEnvio = document.getElementById('zona-envio');
-const nombreZona = selectEnvio.options[selectEnvio.selectedIndex].getAttribute('data-nombre');
-const envioValor = parseFloat(selectEnvio.value);
-const esAConvenir = envioValor === -1;
-if (!cliente || !telf) return alert('Por favor completa los campos obligatorios de Nombre y Teléfono.');
-const subtotal = carrito.reduce((acc, i) => acc + (i.precio * i.cant), 0);
-const envio = esAConvenir ? 0 : envioValor;
-let porcVolumen = subtotal > 1800 ? 0.03 : (subtotal > 1200 ? 0.02 : (subtotal > 600 ? 0.01 : 0));
-let porcFidelidad = tienePremioActivo ? 0.02 : 0;
-let porcTotal = porcVolumen + porcFidelidad;
-let montoDescuento = subtotal * porcTotal;
-let totalPagar = (subtotal - montoDescuento) + envio;
-let msj = `🛒 *NUEVO PEDIDO - PG DEL CAMPO*%0A`;
-msj += `=============================%0A`;
-msj += `👤 *Cliente:* ${cliente}%0A`;
-msj += `📞 *Teléfono:* ${telf}%0A`;
-msj += `=============================%0A%0A`;
-msj += `*DETALLE DE PRODUCTOS:*%0A`;
-carrito.forEach(i => {
-msj += `• ${i.nombre}%0A`;
-msj += ` Cantidad: ${i.cant} | Subtotal: C$ ${(i.precio * i.cant).toFixed(2)}%0A`;
-});
-msj += `%0A=============================%0A`;
-msj += `*Subtotal:* C$ ${subtotal.toFixed(2)}%0A`;
-if (porcTotal > 0) msj += `*Descuento (${(porcTotal * 100).toFixed(0)}%):* -C$ ${montoDescuento.toFixed(2)}%0A`;
-msj += `*Modalidad Despacho:* ${nombreZona}%0A`;
-msj += `*Dirección:* ${dir || 'Retiro en Sucursal'}%0A%0A`;
-msj += esAConvenir
-? `*TOTAL (Envío por definir):* C$ ${(subtotal - montoDescuento).toFixed(2)}%0A`
-: `*TOTAL COMPRA NETO:* C$ ${totalPagar.toFixed(2)}%0A`;
-msj += `=============================%0A%0A`;
-msj += `💳 *Pago Directo LAFISE Bancentro:* https://digital.lafise.com?BANK=BLNI%26ACCOUNT_NUMBER=133031007`;
-await registrarPedidoEnFirebase(totalPagar);
-window.open(`https://wa.me/${numeroDestinoWhatsApp}?text=${msj}`, '_blank');
-carrito = [];
-localStorage.removeItem('carrito');
-document.getElementById('cliente-dir').value = '';
-calcularTotales();
-alert("✅ ¡Pedido despachado con éxito! El carrito se ha limpiado automáticamente.");
-window.location.reload();
-};
-
-window.generarEImprimirRecibo = async function() {
-if (carrito.length === 0) return alert('No existen artículos en tránsito.');
-const cliente = document.getElementById('cliente-nombre').value.trim() || 'Cliente General';
-const telf = document.getElementById('cliente-tel').value.trim() || 'N/A';
-const dir = document.getElementById('cliente-dir').value.trim() || 'Despacho Convencional';
-const selectEnvio = document.getElementById('zona-envio');
-const envioValor = parseFloat(selectEnvio.value);
-const esAConvenir = envioValor === -1;
-const subtotal = carrito.reduce((acc, i) => acc + (i.precio * i.cant), 0);
-const envio = esAConvenir ? 0 : envioValor;
-let porcVolumen = subtotal > 1800 ? 0.03 : (subtotal > 1200 ? 0.02 : (subtotal > 600 ? 0.01 : 0));
-let porcFidelidad = tienePremioActivo ? 0.02 : 0;
-let porcTotal = porcVolumen + porcFidelidad;
-let montoDescuento = subtotal * porcTotal;
-let totalPagar = (subtotal - montoDescuento) + envio;
-document.getElementById('rec-num').innerText = String(contadorRecibo).padStart(7, '0');
-document.getElementById('rec-date').innerText = new Date().toLocaleDateString('es-NI');
-document.getElementById('rec-cliente-info').innerHTML = `<strong>Cliente:</strong> ${cliente}<br><strong>Teléfono:</strong> ${telf}<br><strong>Dirección:</strong> ${dir}`;
-const recItems = document.getElementById('rec-items-list');
-recItems.innerHTML = '';
-carrito.forEach(i => {
-recItems.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>${i.cant}x ${i.nombre}</span><span>C$ ${(i.precio * i.cant).toFixed(2)}</span></div>`;
-});
-document.getElementById('rec-subtotal').innerText = `C$ ${subtotal.toFixed(2)}`;
-document.getElementById('rec-envio').innerText = esAConvenir ? 'A convenir' : `C$ ${envio.toFixed(2)}`;
-if (porcTotal > 0) {
-document.getElementById('rec-linea-desc').style.display = 'flex';
-document.getElementById('rec-desc-label').innerText = `Descuento (${(porcTotal * 100).toFixed(0)}%):`;
-document.getElementById('rec-desc-monto').innerText = `- C$ ${montoDescuento.toFixed(2)}`;
-} else {
-document.getElementById('rec-linea-desc').style.display = 'none';
-}
-document.getElementById('rec-total-monto').innerText = esAConvenir
-? `C$ ${(subtotal - montoDescuento).toFixed(2)} + envío a convenir`
-: `C$ ${totalPagar.toFixed(2)}`;
-await registrarPedidoEnFirebase(totalPagar);
-document.getElementById('receipt-modal').style.display = 'flex';
-contadorRecibo++;
-carrito = [];
-localStorage.removeItem('carrito');
-document.getElementById('cliente-dir').value = '';
-calcularTotales();
-};
-
-window.cerrarModalRecibo = function() {
-document.getElementById('receipt-modal').style.display = 'none';
-window.location.reload();
-};
-</script>
-</body>
-</html>
