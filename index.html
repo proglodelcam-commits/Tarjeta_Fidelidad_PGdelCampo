@@ -365,7 +365,7 @@ const numeroDestinoWhatsApp = "50557973097";
 
 /* ===== GENERADOR DINÁMICO DE ENLACE Y QR LAFISE BANCENTRO ===== */
 function generarUrlLafise(monto, numeroRecibo) {
- return `https://digital.lafise.com/?BANK=BLNI&ACCOUNT_NUMBER=133031007`;
+ return `https://digital.lafise.com/?BANK=BLNI&ACCOUNT_NUMBER=133031007"target="_blank" rel="noopener">Pagar desde App LAFISE Bancentro`;
 }
 
 window.evaluarEnterAcceso = function(event) {
@@ -655,7 +655,7 @@ window.procesarPagoWhatsApp = async function() {
  msj += '=============================%0A%0A';
  msj += '*El banco en tus manos con LAFISE Digital - LAFISE Nicaragua*%0A';
  msj += 'Controla tu dinero al instante desde tu celular. Abre tu Cuenta de Ahorro Digital, Transfiere sin esperas, recibe tus remesas y gestiona tu dinero.%0A%0A';
- msj += `💳 *Pago Directo LAFISE:* ${urlLafiseDinamico}`;
+   msj += ` 💳 *Pago Directo LAFISE:* https://digital.lafise.com?BANK=BLNI%26ACCOUNT_NUMBER=133031007`;
  await registrarPedidoEnFirebase(totalPagar, numeroReciboFormateado);
  window.open(`https://wa.me/${numeroDestinoWhatsApp}?text=${msj}`, '_blank');
  carrito = [];
