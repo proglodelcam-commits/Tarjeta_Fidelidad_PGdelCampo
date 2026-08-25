@@ -430,7 +430,8 @@ body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 
         </div>
       </div>
       <hr style="border:none; border-top:1px dashed #ccc; margin:8px 0;">
-      <p style="text-align:center; font-size:11px; font-weight:bold; color:var(--primary); margin-top:8px;">¡Gracias por preferirnos e impulsar el campo!</p>
+      <p style="text-align:center; font-size:11px; font-weight:bold; color:var(--primary); margin-top:8px;">¡ד            BS"D
+Todo lo Bueno viene de Dios, con su ayuda todo es posible realizar!</p>
     </div>
     <button class="btn-action btn-recibo no-print" style="margin-top:15px;" onclick="window.print()">Mandar a Impresora</button>
   </div>
@@ -796,12 +797,12 @@ window.procesarPagoWhatsApp = async function() {
   } else {
     msj += '*MÉTODO DE PAGO: Pago Contra Entrega*\n';
     msj += 'El cliente abonará el monto total en efectivo o mediante transferencia al momento de recibir su pedido.\n\n';
+    msj += `Enlace directo: ${urlLafiseDinamico}\n`;
   }
   
-  msj += 'Si deseas pagar por transferencia LAFISE al momento de la entrega:\n';
-  msj += 'Titular: *Fernando Martínez* | Cuenta: *140051265*\n';
-  msj += `Enlace directo: ${urlLafiseDinamico}`;
-  
+    msj += ' BS"D       בס"ד:\n';
+    msj += 'Todo lo Bueno viene de Dios, con su ayuda todo es posible realizar\n';
+    
   await registrarPedidoEnFirebase(totalPagar, numeroReciboFormateado);
   
   const mensajeFinalCodificado = encodeURIComponent(msj);
