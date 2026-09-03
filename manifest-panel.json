@@ -1,0 +1,14 @@
+{
+  "name": "PG del Campo - Panel Admin",
+  "short_name": "PG Admin",
+  "description": "Panel de administración integral de Productos Globales del Campo.",
+  "start_url": "/panel-integralpg.html",
+  "display": "standalone",
+  "background_color": "#10241c",
+  "theme_color": "#1b382b",
+  "orientation": "any",
+  "icons": [
+    { "src": "pg-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "pg-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

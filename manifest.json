@@ -1,0 +1,14 @@
+{
+  "name": "PG del Campo - Catálogo",
+  "short_name": "PG Campo",
+  "description": "Productos nicaragüenses de calidad: Café, Pinolillo y Pinol. Directamente del campo a su mesa.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1b382b",
+  "theme_color": "#2E7D32",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "pg-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "pg-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
