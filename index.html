@@ -28,116 +28,301 @@
 body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.5; padding-bottom: 60px; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* ===== PANTALLA INICIAL DE FIDELIDAD ===== */
-.client-stamp-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  background-color: var(--bg-cream);
+/* ===== PANTALLA HERO INTERACTIVA ===== */
+.splash-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  min-height: 100vh; min-height: 100dvh;
+  background: linear-gradient(160deg, #0d1f17 0%, #1b382b 35%, #2a5a42 65%, #1b4d3e 100%);
+  overflow: hidden;
 }
-.client-stamp-card {
-  background: linear-gradient(135deg, #1b4d3e 0%, #2c6b56 100%);
-  color: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 460px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+
+/* animated background particles */
+.splash-particles {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.splash-particles .dot {
+  position: absolute; border-radius: 50%; background: rgba(200,150,62,0.18);
+  animation: float-up linear infinite;
+}
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-110vh) scale(0.4); opacity: 0; }
+}
+
+/* diagonal decorative lines */
+.splash-lines {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 80px,
+      rgba(200,150,62,0.04) 80px,
+      rgba(200,150,62,0.04) 81px
+    );
+}
+
+/* corner leaf emblems */
+.splash-leaf-tl, .splash-leaf-br {
+  position: absolute; font-size: clamp(80px, 15vw, 200px);
+  color: rgba(142,176,87,0.08); pointer-events: none;
+  animation: leaf-breathe 6s ease-in-out infinite alternate;
+}
+.splash-leaf-tl { top: -10px; left: -10px; }
+.splash-leaf-br { bottom: -10px; right: -10px; animation-delay: 3s; }
+@keyframes leaf-breathe {
+  0%   { transform: scale(1) rotate(0deg); opacity: 0.06; }
+  100% { transform: scale(1.12) rotate(5deg); opacity: 0.12; }
+}
+
+/* content card */
+.splash-card {
+  position: relative; z-index: 2;
+  width: 94%; max-width: 520px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 28px;
+  padding: clamp(24px, 5vw, 44px);
   text-align: center;
+  animation: card-enter 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  box-shadow:
+    0 0 80px rgba(200,150,62,0.08),
+    0 24px 48px rgba(0,0,0,0.25);
 }
-.client-card-header h3 {
+@keyframes card-enter {
+  0%   { opacity: 0; transform: translateY(40px) scale(0.92); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.splash-logo {
+  width: clamp(90px, 22vw, 140px);
+  height: auto;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4));
+  animation: logo-glow 3s ease-in-out infinite alternate;
+  margin-bottom: 8px;
+}
+@keyframes logo-glow {
+  0%   { filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4)) brightness(1); }
+  100% { filter: drop-shadow(0 4px 22px rgba(200,150,62,0.35)) brightness(1.08); }
+}
+
+.splash-brand {
   font-family: 'Fraunces', serif;
-  font-size: 24px;
-  margin-bottom: 15px;
+  font-weight: 800;
+  font-size: clamp(22px, 5vw, 32px);
+  color: #fff;
   letter-spacing: 0.02em;
+  margin-bottom: 4px;
 }
-.card-logo-img {
-  max-height: 65px;
-  width: auto;
-  margin-bottom: 15px;
-  filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.3));
+.splash-tagline {
+  font-size: clamp(11px, 2.5vw, 14px);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 22px;
+  line-height: 1.5;
 }
-.client-search-box {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 20px;
-  margin-bottom: 15px;
+
+/* benefit pills */
+.splash-benefits {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
 }
-.client-search-box input {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  text-align: center;
-  color: #333;
+.splash-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  padding: 6px 14px;
+  font-size: clamp(10px, 2.2vw, 12.5px);
+  color: rgba(255,255,255,0.9);
   font-weight: 600;
+  backdrop-filter: blur(6px);
+  transition: var(--transition);
+  cursor: default;
 }
-.client-search-box button {
-  background-color: #ffca28;
+.splash-pill:hover { background: rgba(200,150,62,0.2); border-color: rgba(200,150,62,0.35); }
+.splash-pill .pill-icon { font-size: 14px; }
+
+/* input group */
+.splash-input-group {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-bottom: 14px;
+}
+.splash-phone-wrap {
+  position: relative;
+  display: flex; align-items: center;
+}
+.splash-prefix {
+  position: absolute; left: 14px;
+  font-size: 14px; font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  pointer-events: none;
+}
+.splash-phone-input {
+  width: 100%;
+  padding: 15px 16px 15px 54px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  outline: none;
+  transition: var(--transition);
+}
+.splash-phone-input::placeholder { color: rgba(255,255,255,0.35); font-weight: 500; letter-spacing: 0; font-size: 14px; }
+.splash-phone-input:focus { border-color: var(--accent); background: rgba(255,255,255,0.12); box-shadow: 0 0 0 4px rgba(200,150,62,0.15); }
+
+.splash-btn-primary {
+  width: 100%;
+  padding: 16px;
   border: none;
-  color: #222;
-  padding: 14px;
-  border-radius: 10px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #c8963e 0%, #e6b84d 100%);
+  color: #10241c;
+  font-size: 15px;
   font-weight: 800;
   cursor: pointer;
-  font-size: 15px;
   transition: var(--transition);
-  box-shadow: 0 4px 10px rgba(255,202,40,0.2);
+  box-shadow: 0 6px 20px rgba(200,150,62,0.3);
+  display: flex; justify-content: center; align-items: center; gap: 8px;
+  position: relative;
+  overflow: hidden;
 }
-.client-search-box button:hover { background-color: #ffb300; transform: translateY(-1px); }
-.client-placeholder { text-align: center; opacity: 0.85; font-size: 13.5px; margin: 10px 0; line-height: 1.4; }
+.splash-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(200,150,62,0.4); }
+.splash-btn-primary:active { transform: translateY(0); }
+.splash-btn-primary .btn-shine {
+  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shine-slide 3s ease-in-out infinite;
+}
+@keyframes shine-slide {
+  0%,100% { left: -100%; }
+  50%     { left: 150%; }
+}
+
+/* skip / guest link */
+.splash-skip {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+  background: none; border: none;
+}
+.splash-skip:hover { color: rgba(255,255,255,0.75); }
+
+/* result area (stamps) */
+.splash-result {
+  margin-top: 16px;
+  text-align: center;
+}
+.splash-result .client-placeholder {
+  color: rgba(255,255,255,0.75); font-size: 13px; line-height: 1.5;
+}
+
 .stamp-grid-10 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-  margin: 20px 0;
+  margin: 18px 0;
   padding: 5px 0;
 }
 .stamp-slot-10 {
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px dashed rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px dashed rgba(255,255,255,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
 }
 .stamp-slot-10.active {
-  background: white;
+  background: var(--accent);
   border-style: solid;
-  border-color: white;
-  transform: scale(1.08);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  color: #333;
+  border-color: var(--accent);
+  transform: scale(1.1);
+  box-shadow: 0 4px 14px rgba(200,150,62,0.5);
+  color: #10241c;
 }
 .stamp-number-10 {
   font-size: 10px;
   position: absolute;
-  bottom: -18px;
-  opacity: 0.75;
-  color: white;
+  bottom: -17px;
+  opacity: 0.6;
+  color: rgba(255,255,255,0.6);
   font-weight: 600;
 }
+.stamp-slot-10.active .stamp-number-10 { color: var(--accent); opacity: 0.8; }
+
 .reward-banner-10 {
-  background-color: #fff3cd;
+  background: linear-gradient(135deg, #fff3cd 0%, #ffe082 100%);
   color: #856404;
-  padding: 15px;
-  border-radius: 12px;
+  padding: 14px;
+  border-radius: 14px;
   text-align: center;
   font-weight: bold;
-  margin: 15px 0;
-  font-size: 14px;
+  margin: 14px 0;
+  font-size: 13px;
   border: 1px solid #ffeeba;
-  line-height: 1.4;
+  line-height: 1.5;
+  animation: reward-pulse 2s ease-in-out infinite;
 }
+@keyframes reward-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,150,62,0.3); }
+  50%      { box-shadow: 0 0 0 8px rgba(200,150,62,0); }
+}
+
+.splash-btn-enter {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #28a745 0%, #34d058 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(40,167,69,0.35);
+  margin-top: 6px;
+}
+.splash-btn-enter:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(40,167,69,0.45); }
+
+/* splash exit */
+.splash-overlay.leaving {
+  animation: splash-out 0.6s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+@keyframes splash-out {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.08); filter: blur(6px); }
+}
+
+/* responsive splash */
+@media (max-width: 480px) {
+  .splash-card { border-radius: 22px; padding: 22px 18px; }
+  .splash-benefits { gap: 6px; }
+  .splash-pill { padding: 5px 10px; font-size: 10px; }
+}
+@media (min-width: 768px) {
+  .splash-card { padding: 44px 48px; }
+}
+
+/* ===== CLIENT-STAMP (kept for JS compat but hidden) ===== */
+.client-stamp-container { display: none; }
 
 /* ===== BANNER PRINCIPAL ===== */
 .banner { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; padding: 36px 20px 52px; position: relative; overflow: hidden; }
@@ -223,24 +408,43 @@ body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 
 </head>
 <body>
 
-<!-- 1. PANTALLA INICIAL DE FIDELIDAD -->
-<div id="pantalla-fidelidad-inicial" class="client-stamp-container">
-  <div class="client-stamp-card">
-    <div class="client-card-header">
-      <img src="https://lh3.googleusercontent.com/d/16eg1wb1cSN6WgwU36J21oF6FtZOBrGDL" alt="Productos Globales del Campo" class="card-logo-img">
+<!-- PANTALLA HERO INTERACTIVA -->
+<div id="pantalla-fidelidad-inicial" class="splash-overlay">
+  <div class="splash-particles" id="splashParticles"></div>
+  <div class="splash-lines"></div>
+  <div class="splash-leaf-tl">🌿</div>
+  <div class="splash-leaf-br">🌿</div>
+
+  <div class="splash-card">
+    <img src="https://lh3.googleusercontent.com/d/16eg1wb1cSN6WgwU36J21oF6FtZOBrGDL" alt="Productos Globales del Campo" class="splash-logo">
+    <h2 class="splash-brand">PG del Campo</h2>
+    <p class="splash-tagline">Distribución inteligente del campo a tu hogar.<br>Estrellas, promociones y despacho directo en un solo lugar.</p>
+
+    <div class="splash-benefits">
+      <span class="splash-pill"><span class="pill-icon">🌟</span> 10ma gratis</span>
+      <span class="splash-pill"><span class="pill-icon">🛒</span> Despacho C$20</span>
+      <span class="splash-pill"><span class="pill-icon">📱</span> WhatsApp</span>
+      <span class="splash-pill"><span class="pill-icon">💳</span> LAFISE QR</span>
     </div>
-    <p class="client-placeholder">
-      Bienvenido a nuestro sistema de entrega a domicilio. Introduce tu número de WhatsApp móvil para verificar tus estrellas acumuladas y activar promociones exclusivas de fidelidad cada 10 compras.
-    </p>
-    <div class="client-search-box">
-      <input type="tel" id="clientPhone" placeholder="WhatsApp (Ej: 88888888)" maxlength="8" onkeypress="evaluarEnterAcceso(event)">
-      <button onclick="verMisSellosYEntrar()">Consultar Estrellas y Comprar →</button>
+
+    <div class="splash-input-group">
+      <div class="splash-phone-wrap">
+        <span class="splash-prefix">+505</span>
+        <input type="tel" id="clientPhone" class="splash-phone-input" placeholder="Tu WhatsApp (8 dígitos)" maxlength="8" onkeypress="evaluarEnterAcceso(event)">
+      </div>
+      <button class="splash-btn-primary" onclick="verMisSellosYEntrar()">
+        <span class="btn-shine"></span>
+        Consultar Estrellas y Comprar →
+      </button>
     </div>
-    <div id="clientStampResult"></div>
+
+    <button class="splash-skip" onclick="entrarComoInvitado()">Continuar sin fidelidad →</button>
+
+    <div id="clientStampResult" class="splash-result"></div>
   </div>
 </div>
 
-<!-- 2. CONTENEDOR PRINCIPAL DEL CATÁLOGO DE LA TIENDA -->
+<!-- CONTENEDOR PRINCIPAL DEL CATÁLOGO DE LA TIENDA -->
 <div id="contenedor-catalogo-principal" style="display: none;">
   <header class="banner">
     <div class="banner-inner">
@@ -258,7 +462,6 @@ body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 
 
   <main class="container" style="margin-top: 40px;">
     <div class="shop-layout">
-      <!-- SECCIÓN IZQUIERDA: CATÁLOGO -->
       <div>
         <div class="catalog-title">Catálogo de Productos Disponibles</div>
         <div id="products-grid" class="products-grid">
@@ -266,7 +469,6 @@ body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 
         </div>
       </div>
 
-      <!-- SECCIÓN DERECHA: PANEL DE CONTROL Y PEDIDOS -->
       <div id="seccion-pedido-checkout">
         <div class="cart-panel">
           <div class="internal-stamp-card">
@@ -373,12 +575,11 @@ body { background-color: var(--bg-cream); color: var(--text-dark); line-height: 
       <div style="display: flex; justify-content:space-between; font-weight:bold; font-size:14px; margin-top:6px;"><span>TOTAL COMPRA:</span><span id="rec-total-monto">C$ 0.00</span></div>
       <hr style="border:none; border-top:1px dashed #ccc; margin:8px 0;">
 
-      <!-- PAGO DIRECTO LAFISE BANCENTRO Y QR DINÁMICO CON ALIAS ACH -->
       <div style="background:#f4f4f6; padding:10px; border-radius:6px; margin:8px 0; font-size: 11px; text-align:center;">
         <p style="font-size:10.5px; color:#444; margin-bottom: 6px;">
-          <strong>Titular:</strong> Fernando Martínez[cite: 5]<br>
-          <em>Representante Legal PG del Campo[cite: 5]</em><br>
-          <strong>Cuenta LAFISE:</strong> 140051265[cite: 5]<br>
+          <strong>Titular:</strong> Fernando Martínez. <br>
+          <em>Representante Legal PG del Campo. </em><br>
+          <strong>Cuenta LAFISE:</strong> 140051265 <br>
           <strong>Alias ACH/Móvil LAFISE:</strong> <span style="background:#e0e7ff; color:#1e40af; padding:2px 6px; border-radius:4px; font-weight:bold;">5797 3097</span>
         </p>
         <div class="no-print">
@@ -425,6 +626,25 @@ let clienteMontoTotalHistorial = 0;
 let tienePremioActivo = false;
 const numeroDestinoWhatsApp = "50557973097";
 
+/* ===== PARTICLES GENERATOR ===== */
+(function generateParticles() {
+  const container = document.getElementById('splashParticles');
+  if (!container) return;
+  const count = window.innerWidth < 500 ? 15 : 30;
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    const size = Math.random() * 6 + 2;
+    dot.style.width = size + 'px';
+    dot.style.height = size + 'px';
+    dot.style.left = Math.random() * 100 + '%';
+    dot.style.bottom = -(Math.random() * 20) + '%';
+    dot.style.animationDuration = (Math.random() * 12 + 8) + 's';
+    dot.style.animationDelay = (Math.random() * 8) + 's';
+    container.appendChild(dot);
+  }
+})();
+
 /* ===== GENERADOR DINÁMICO DE ENLACE Y QR LAFISE BANCENTRO ===== */
 function generarUrlLafise(monto, numeroRecibo) {
   const montoFormateado = monto.toFixed(2);
@@ -435,6 +655,20 @@ function generarUrlLafise(monto, numeroRecibo) {
 
 window.evaluarEnterAcceso = function(event) {
   if (event.key === "Enter") { window.verMisSellosYEntrar(); }
+};
+
+/* ===== GUEST ENTRY ===== */
+window.entrarComoInvitado = function() {
+  const overlay = document.getElementById('pantalla-fidelidad-inicial');
+  overlay.classList.add('leaving');
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    document.getElementById('contenedor-catalogo-principal').style.display = 'block';
+    document.getElementById('cliente-tel').value = '';
+    document.getElementById('cliente-nombre').value = '';
+    const miniPanel = document.getElementById('internalStampContent');
+    miniPanel.innerHTML = `<div style="font-size:12.5px;line-height:1.4;"><p><strong>Modo:</strong> Invitado (Sin fidelidad)</p><p style="opacity:0.7;font-size:11px;">Registra tu teléfono la próxima vez para acumular estrellas.</p></div>`;
+  }, 550);
 };
 
 async function cargarCatalogoProductos() {
@@ -500,13 +734,13 @@ window.verMisSellosYEntrar = async function() {
       ? "¡Bienvenido a PG del Campo! Estás por iniciar tu primera tarjeta digital de estrellas."
       : `¡Hola de nuevo, <strong>${nombreCliente}</strong>! Cuentas con <strong>${totalCompras}</strong> compras en nuestro registro histórico.`;
     
-    let html = `<p class='client-placeholder' style='margin: 15px 0 10px;'>${resumenTexto}</p>`;
+    let html = `<p class='client-placeholder' style='margin:15px 0 10px;'>${resumenTexto}</p>`;
     html += '<div class="stamp-grid-10">';
     for (let i = 1; i <= 10; i++) {
       if (i <= sellosActuales) {
-        html += `<div class="stamp-slot-10 active"><span class="stamp-number-10">${i}</span></div>`;
+        html += `<div class="stamp-slot-10 active">⭐<span class="stamp-number-10">${i}</span></div>`;
       } else {
-        html += `<div class="stamp-slot-10"><span class="stamp-number-10">${i}</span></div>`;
+        html += `<div class="stamp-slot-10">◯<span class="stamp-number-10">${i}</span></div>`;
       }
     }
     html += '</div>';
@@ -519,9 +753,9 @@ window.verMisSellosYEntrar = async function() {
       </div>`;
     } else {
       let restantes = 10 - sellosActuales;
-      html += `<p class='client-placeholder' style='margin-bottom: 20px; font-weight:bold; color:#ffca28;'>Te faltan únicamente ${restantes} compras para desbloquear tu próximo descuento.</p>`;
+      html += `<p class='client-placeholder' style='margin-bottom:20px;font-weight:bold;color:#ffca28;'>Te faltan únicamente ${restantes} compras para desbloquear tu próximo descuento.</p>`;
     }
-    html += `<button onclick="desbloquearTiendaCatalogo('${telefono}', '${nombreCliente}', ${sellosActuales})" style="background-color: #28a745; color: white; border: none; padding: 14px; border-radius: 10px; font-weight: bold; width: 100%; cursor: pointer; font-size: 16px; box-shadow: 0 4px 12px rgba(40,167,69,0.3); transition: 0.2s;">Acceder al Catálogo de Compra</button>`;
+    html += `<button class="splash-btn-enter" onclick="desbloquearTiendaCatalogo('${telefono}', '${nombreCliente}', ${sellosActuales})">Acceder al Catálogo de Compra</button>`;
     resultadoDiv.innerHTML = html;
   } catch (err) {
     console.error(err);
@@ -530,17 +764,21 @@ window.verMisSellosYEntrar = async function() {
 };
 
 window.desbloquearTiendaCatalogo = function(telefono, nombre, sellos) {
-  document.getElementById("pantalla-fidelidad-inicial").style.display = "none";
-  document.getElementById("contenedor-catalogo-principal").style.display = "block";
-  document.getElementById("cliente-tel").value = telefono;
-  document.getElementById("cliente-nombre").value = nombre === "Cliente Frecuente" ? "" : nombre;
-  const miniPanel = document.getElementById("internalStampContent");
-  miniPanel.innerHTML = `
-  <div style="font-size: 12.5px; line-height:1.4;">
-    <p><strong>Teléfono:</strong> ${telefono}</p>
-    <p><strong>Estrellas Ciclo:</strong> ${sellos} de 10 acumuladas</p>
-    ${tienePremioActivo ? '<span style="display:inline-block; background:#ffca28; color:#10241c; font-size: 10px; font-weight:bold; padding:2px 6px; border-radius:4px; margin-top:4px;">Beneficio 10ma Compra Habilitado</span>' : ''}
-  </div>`;
+  const overlay = document.getElementById('pantalla-fidelidad-inicial');
+  overlay.classList.add('leaving');
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    document.getElementById('contenedor-catalogo-principal').style.display = 'block';
+    document.getElementById('cliente-tel').value = telefono;
+    document.getElementById('cliente-nombre').value = nombre === 'Cliente Frecuente' ? '' : nombre;
+    const miniPanel = document.getElementById('internalStampContent');
+    miniPanel.innerHTML = `
+    <div style="font-size:12.5px;line-height:1.4;">
+      <p><strong>Teléfono:</strong> ${telefono}</p>
+      <p><strong>Estrellas Ciclo:</strong> ${sellos} de 10 acumuladas</p>
+      ${tienePremioActivo ? '<span style="display:inline-block;background:#ffca28;color:#10241c;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:4px;margin-top:4px;">Beneficio 10ma Compra Habilitado</span>' : ''}
+    </div>`;
+  }, 550);
 };
 
 cargarCatalogoProductos();
@@ -794,7 +1032,7 @@ window.generarEImprimirRecibo = async function() {
   const recItems = document.getElementById('rec-items-list');
   recItems.innerHTML = "";
   carrito.forEach(i => {
-    recItems.innerHTML += `<div style="display: flex; justify-content:space-between; margin-bottom:4px;"><span>${i.cant}x ${i.nombre}</span><span>C$ ${(i.precio * i.cant).toFixed(2)}</span></div>`;
+    recItems.innerHTML += `<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span>${i.cant}x ${i.nombre}</span><span>C$ ${(i.precio * i.cant).toFixed(2)}</span></div>`;
   });
 
   document.getElementById('rec-subtotal').innerText = `C$ ${subtotal.toFixed(2)}`;
